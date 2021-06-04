@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<meta charset="utf-8">
+<head>
+    <title>Order.it - Service Registration Form</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        body{
+            background-color: #efeff1;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+        }
+    </style>
+</head>
+<body>
+<div class="container"style="margin-left:650px; width:600px; margin-top: 150px;">
+    </br>
+    <div style="position: fixed; margin-top: -100px; margin-left: 100px;">
+        <img src="../static/img/logoorderit.png" th:src="@{/static/img/logoorderit.png}" alt="infographic" style="width: 200px;"/>
+    </div>
+    </br>
+            <form autocomplete="off" action="#" th:action="@{/shopRegistration}"
+                  th:object="${shop}" method="post" class="form-horizontal"
+                  role="form">
+                <h2>Registration</h2>
+                <div>
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <input type="text" th:field="*{shopName}" placeholder="shop name, ex. 'GoodHairdresser'"
+                               class="form-control"/>
+                        <label th:if="${#fields.hasErrors('shopName')}" th:errors="*{shopName}"
+                               class="error-message"></label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <input type="text" th:field="*{shopAmenity}" placeholder="amenity, ex. 'hairdresser'"
+                               class="form-control"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <input type="text" th:field="*{shopType}" placeholder="shop, ex. 'Barber shop'"
+                               class="form-control"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <input type="text" th:field="*{shopRoad}" placeholder="road, ex. 'Long St. 4/22'"
+                               class="form-control"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <input type="text" th:field="*{shopTown}"
+                               placeholder="town, ex. 'Warsaw'" class="form-control"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <input type="text" th:field="*{shopState}"
+                               placeholder="state, ex. 'mazowieckie'" class="form-control"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <input type="text" th:field="*{shopPostcode}"
+                               placeholder="postcode, ex. '11-111'" class="form-control"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <textarea type="text-area" th:field="*{shopDescription}"
+                                  placeholder="description, ex. 'We provide the best services in Warsaw!'" class="form-control" rows="5"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <button type="submit" class="btn btn-primary btn-block">Register your local!</button>
+                    </div>
+                </div>
+
+                <h2><span class="text-success" th:utext="${successMessage}">
+                </span></h2>
+
+            </form>
+    <div style="margin-left: 0px;">
+        <form th:action="@{/home}" method="get">
+            <button class="btn btn-secondary" type="Submit" style="width: 420px;">>Go to the Home page< </button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

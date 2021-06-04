@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Order.it - Home</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/templates/home.css">
+    <style>
+        body{
+            background-color: #efeff1;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+        }
+    </style>
+</head>
+<body>
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/home">Home</a></li>
+            </ul>
+            <ul class="nav navbar-nav">
+                <li class=""><a href="/login">Login</a></li>
+            </ul>
+        </div>
+    </div>
+    <div style="position: fixed; margin-left: 350px; margin-top: 200px;">
+        <img src="../static/img/logoorderit.png" th:src="@{/static/img/logoorderit.png}" alt="infographic" style="width: 150px;"/>
+    </div>
+    <div class="input-group-append" style="position:fixed; margin:0 auto; width:400px; left:650px; bottom:650px;">
+        <form th:action="@{/home}" method="POST">
+            Enter the type of service below:
+            <input type="text" class="form-control" placeholder=" ex.'hairdresser'" id="shopAmenity" name="shopAmenity">
+            Enter the city where you want to order the service:
+            <input type="text" class="form-control" placeholder=" ex.'Warsaw'" id="shopTown" name="shopTown">
+            <h2><span class="text-danger" th:utext="${failMessage}">
+                </span></h2>
+            <button type="submit" class="btn btn-secondary btn-sm">Find available services</button>
+        </form>
+    </div>
+</div>
+
+<div style="position: fixed; margin-left: 350px; margin-top: 300px;">
+    <img src="../static/img/infographic.png" th:src="@{/static/img/infographic.png}" alt="infographic" style="width: 1000px;"/>
+</div>
+
+<div class="navbar fixed-bottom" style="position:fixed; margin-bottom: auto;">
+    <div style="margin: auto;">
+        <a href="/shopRegistration">Join us - register your local!</a>
+    </div>
+    <div class="card-footer text-muted" style="margin-left: 0px; width: 2300px;">
+        Order.it - 2021, <a href="http://www.freepik.com">Images designed by slidesgo / Freepik</a>
+    </div>
+</div>
+</body>
+</html>

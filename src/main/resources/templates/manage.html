@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<meta charset="utf-8">
+<meta http-equiv="refresh" content="s">
+<head>
+    <meta charset="UTF-8">
+    <title>Order.it - Manage your service</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        body{
+            background-color: #efeff1;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+        }
+    </style>
+</head>
+<body>
+<div class="navbar navbar-inverse navbar-fixed-top" style="margin:0 auto;">
+    <div style="position: fixed; margin-left: 330px; margin-top: 10px;">
+        <img src="../static/img/logoorderit.png" th:src="@{/static/img/logoorderit.png}" alt="infographic" style="width: 80px;"/>
+    </div>
+    <div class="container" style="marign: auto; margin-left: 400px;">
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class=""><a href="/welcome">Home</a></li>
+            </ul>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/manage">Manage your business</a></li>
+            </ul>
+            <ul class="nav navbar-nav">
+                <li class=""><a href="/logout">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div style="position:fixed; margin: 0 auto; margin-top: 20px;">
+<div class="card" style="position:fixed; margin-left: 380px; width:500px; height: 520px; margin-top: 26px;">
+
+<h5 class="card-header" th:text="${shop.shopName} + ', ' + ${shop.shopTown} + ' ' + ${shop.shopRoad}"></h5>
+<div class="card-body">
+    <h5 class="card-title" th:text="${shop.shopType}"></h5>
+    <label>Current description: </label>
+    <p class="card-text" th:text="${shop.shopDescription}"></p>
+    <form th:href="@{'/manage/'}" method="POST" class="form-signin" th:width="100"}
+          th:object="${shop}" role="form">
+        <div class="form-group">
+            <label for="shopDescription">New description: </label>
+            <textarea class="form-control" id="shopDescription" rows="5" name="shopDescription"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block" style="width:90px;" th:href="@{'/manage'}">Save changes</button>
+    </form>
+</div>
+
+    <div style="position: fixed; margin-top: 280px; margin-left: 15px;">
+    <h5 class="class-header"> Upload new shop avatar below: </h5>
+        <h6>Set the avatar with a resolution of 156x156 (pixels)</h6>
+    </br>
+
+    <div class="card" style="margin-left: 280px;">
+
+        <div style="position: fixed; margin-left: -260px; margin-top: 0px;">
+            <img class="image" th:src="@{'/static/img/avatars/'+${shop.avatarName}}" style="width: 160px;"/>
+            <br>
+
+        </div>
+
+        <form method="POST" th:action="@{/manage/uploadFile}" enctype="multipart/form-data">
+            <table style="margin-left: -55px;">
+                <tr>
+                    <td path="file">Select a file: > </td>
+                    <td><input type="file" name="file" /></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Submit" /></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    </div>
+</div>
+
+<div style="position:fixed; margin-left: 900px; width:400px;">
+<h3>Pending orders:</h3>
+<div th:each="order : ${order}" class="card">
+    <form th:action="@{'/manage/deleteOrder/' + ${order.orderId}}" method="POST">
+        <h5 class="card-header" th:text="${order.shopName} + ', ' + ${order.shopTown} + ' ' + ${order.shopRoad}"></h5>
+        <div class="card-body">
+            <h4 class="card-title" th:text="${order.serviceType}"></h4>
+            <div class="form-group" th:text="'Date of service: '+${order.dateOfService}"></div>
+            <h5>Contact:</h5>
+            <div class="card-title" th:text="'Mrs/Ms: ' + ${order.orderingName} +', tel.'+ ${order.orderingPhoneNumber}"></div>
+            <h5>Comments regarding the order: </h5>
+            <div class="comments" th:text="${order.commentsOnOrder}"></div>
+        </div>
+        <button type="submit" class="btn btn-secondary btn-sm" th:href="@{'/myOrders'}">Cancel the order</button>
+    </form>
+</div>
+</div>
+</div>
+
+<div class="navbar fixed-bottom" style="position:fixed; margin-bottom: auto;">
+    <div class="card-footer text-muted" style="margin-left: 0px; width: 2300px;">
+        Order.it - 2021
+    </div>
+</div>
+</body>
+</html>

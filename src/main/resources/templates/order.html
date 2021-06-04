@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<meta charset="utf-8">
+
+<head>
+    <title>Order.it - Choose your order</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
+    <style>
+        body{
+            background-color: #efeff1;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+        }
+
+    </style>
+
+</head>
+<body>
+<div class="navbar navbar-inverse navbar-fixed-top" style="margin:0 auto;">
+    <div style="position: fixed; margin-left: 330px; margin-top: 10px;">
+        <img src="../static/img/logoorderit.png" th:src="@{/static/img/logoorderit.png}" alt="infographic" style="width: 80px;"/>
+    </div>
+    <div class="container"style="marign: auto; margin-left: 400px;">
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class=""><a href="/welcome">Home</a></li>
+            </ul>
+            <ul class="nav navbar-nav">
+                <li class=""><a href="/myOrders">My Orders</a></li>
+            </ul>
+
+            <ul class="nav navbar-nav">
+                <li class=""><a href="/logout">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<div style="position: fixed; margin: auto 0px;">
+
+<div th:each="shop : ${shop}" class="card" style="margin:0 auto; width:400px; margin-top: 20px; margin-left: 750px;">
+
+<!--    src="../uploads/shopAvatars/+ <${shop.avatarName}>"-->
+
+    <div style="position: fixed; margin-left: -170px; margin-top: 0px;">
+        <img class="image" th:src="@{'/static/img/avatars/'+${shop.avatarName}}" style="width: 160px;"/>
+    </div>
+
+
+    <div class="card" style="position: fixed; margin-left: 405px; width: 20rem; height: 16rem;">
+        <br>
+        <div class="rating">
+            <div class="col-xs-12 col-md-6" style="position: fixed; width: 10%; height: 12%; margin-left: -2px;">
+                <div class="row rating-desc">
+                    <div class="col-xs-3 col-md-3 text-right">
+                        <span class="glyphicon glyphicon-star"></span>5
+                    </div>
+                    <div class="col-xs-8 col-md-9">
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100" style="width: 25%;"></div>
+                        </div>
+                    </div>
+                    <!-- end 5 -->
+                        <div class="col-xs-3 col-md-3 text-right">
+                            <span class="glyphicon glyphicon-star"></span>2
+                        </div>
+                        <div class="col-xs-8 col-md-9">
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="20"
+                                     aria-valuemin="0" aria-valuemax="100" style="width: 3%" th:text="${shop.shopGrade.numberOf2}">
+                                </div>
+                            </div>
+                        </div>
+                    <!-- end 4 -->
+                    <div class="col-xs-3 col-md-3 text-right">
+                        <span class="glyphicon glyphicon-star"></span>3
+                    </div>
+                    <div class="col-xs-8 col-md-9">
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="20"
+                                 aria-valuemin="0" aria-valuemax="100" style="width: 2%" th:text="${shop.shopGrade.numberOf3}"></div>
+                        </div>
+                    </div>
+                    <!-- end 3 -->
+                    <div class="col-xs-3 col-md-3 text-right">
+                        <span class="glyphicon glyphicon-star"></span>2
+                    </div>
+                    <div class="col-xs-8 col-md-9">
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="20"
+                                 aria-valuemin="0" aria-valuemax="100" style="width: 3%" th:text="${shop.shopGrade.numberOf2}"></div>
+                        </div>
+                    </div>
+                    <!-- end 2 -->
+                    <div class="col-xs-3 col-md-3 text-right">
+                        <span class="glyphicon glyphicon-star"></span>1
+                    </div>
+                    <div class="col-xs-8 col-md-9">
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80"
+                                 aria-valuemin="0" aria-valuemax="100" style="width: 0%" th:text="${shop.shopGrade.numberOf1}"></div>
+                        </div>
+                    </div>
+                    <!-- end 1 -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div style="height: 16rem;">
+    <h5 class="card-header" th:text="${shop.shopName} + ', ' + ${shop.shopTown} + ' ' + ${shop.shopRoad}"></h5>
+    <div class="card-body">
+        <h5 class="card-title" th:text="${shop.shopType}"></h5>
+        <p class="card-text" th:text="${shop.shopDescription}"></p>
+        <a th:href="@{'/offer/' + ${shop.shopTown} + '-' + ${shop.shopAmenity} + '-' + ${shop.shopName} }" class="btn btn-primary">Offer</a>
+    </div>
+    </div>
+</div>
+</div>
+
+</div>
+
+<div class="navbar fixed-bottom" style="position:fixed; margin-bottom: auto;">
+    <div class="card-footer text-muted" style="margin-left: 0px; width: 2300px;">
+        Order.it - 2021
+    </div>
+</div>
+</body>
+</html>

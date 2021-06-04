@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<meta charset="utf-8">
+<head>
+    <title>Registration - for users</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        body{
+            background-color: #efeff1;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+        }
+    </style>
+</head>
+<body>
+<div class="container"style="position:fixed; margin-left:680px ; width:500px; margin-top: 150px;">
+    </br>
+    <div style="position: fixed; margin-top: -100px; margin-left: 60px;">
+        <img src="../static/img/logoorderit.png" th:src="@{/static/img/logoorderit.png}" alt="infographic" style="width: 200px;"/>
+    </div>
+            </br>
+            <form autocomplete="off" action="#" th:action="@{/registration}"
+                  th:object="${user}" method="post" class="form-horizontal"
+                  role="form">
+                <h2>Registration</h2>
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <label th:if="${#fields.hasErrors('userRealName')}" th:errors="*{userRealName}"
+                               class="validation-message"></label>
+                        <input type="text" th:field="*{userRealName}" placeholder="name"
+                               class="form-control"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <input type="text" th:field="*{surname}"
+                               placeholder="surname" class="form-control"/>
+                        <label th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}"
+                               class="validation-message"></label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <label th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+                                class="validation-message"></label>
+                        <input type="text" th:field="*{email}" placeholder="email"
+                               class="form-control"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <input type="text" th:field="*{phoneNumber}" placeholder="phone number"
+                               class="form-control"/>
+                        <label th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"
+                               class="validation-message"></label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <label th:if="${#fields.hasErrors('username')}" th:errors="*{username}"
+                                class="validation-message"></label>
+                        <input type="text" th:field="*{username}" placeholder="username"
+                               class="form-control"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <input type="password" th:field="*{password}"
+                               placeholder="password" class="form-control"/> <label
+                            th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
+                            class="validation-message"></label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <button type="submit" class="btn btn-primary btn-block">Register new user</button>
+                    </div>
+                </div>
+
+                <h2><span class="text-success" th:utext="${successMessage}">
+                </span></h2>
+
+            </form>
+    <div style="margin-left: 70px;">
+        <form th:action="@{/}" method="get">
+            <button class="btn btn-secondary" type="Submit">Already have an account? > Sign in < </button>
+        </form>
+    </div>
+</div>
+<div class="navbar fixed-bottom" style="position:fixed; margin-bottom: auto;">
+    <div class="card-footer text-muted" style="margin-left: 0px; width: 2300px;">
+        Order.it - 2021
+    </div>
+</div>
+</body>
+</html>

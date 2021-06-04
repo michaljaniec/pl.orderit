@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<meta charset="utf-8">
+<head>
+    <title>Order.it - Message's Box</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div style="position: fixed; margin-left: 330px; margin-top: 10px;">
+        <img src="../static/img/logoorderit.png" th:src="@{/static/img/logoorderit.png}" alt="infographic" style="width: 80px;"/>
+    </div>
+    <div class="container"style="marign: auto; margin-left: 400px;">
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class=""><a href="/welcome">Home</a></li>
+            </ul>
+            <ul class="nav navbar-nav">
+                <li class=""><a href="/myOrders">My Orders</a></li>
+            </ul>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/messages">Message's box</a></li>
+            </ul>
+            <ul class="nav navbar-nav">
+                <li class=""><a href="/logout">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div style="position:fixed; margin-left: 700px; width:400px;">
+<h3>Pending messages:</h3>
+<div th:each="message : ${message}" class="card" >
+<div class="card" style="margin: 0 auto;">
+    <div class="card-body">
+        <h3 th:text="'from, ' + ${message.sendingUsername}"></h3>
+        <p th:text="${message.messageBody}"></p>
+        <form th:action="@{'/messages/deleteMessage/' + ${message.id}}" method="POST">
+        <button type="submit" class="btn btn-secondary btn-sm" th:href="@{'/messages'}">Delete message</button>
+        </form>
+    </div>
+</div>
+</div>
+</div>
+</body>
+</html>

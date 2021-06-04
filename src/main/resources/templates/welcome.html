@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Order.it - Welcome </title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/templates/home.css">
+    <style>
+        body{
+            background-color: #efeff1;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+        }
+    </style>
+</head>
+<body>
+<div class="navbar navbar-inverse navbar-fixed-top" style="margin: auto 0px;">
+    <div class="container">
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/welcome">Home</a></li>
+            </ul>
+            <ul class="nav navbar-nav">
+                <li class=""><a href="/myOrders">My Orders</a></li>
+            </ul>
+            <ul class="nav navbar-nav">
+                <li class=""><a href="/messages">Message's box</a></li>
+            </ul>
+            <ul class="nav navbar-nav">
+                <li class=""><a href="/manage">Manage your business</a></li>
+            </ul>
+            <ul class="nav navbar-nav">
+                <li class=""><a href="/logout">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+</br>
+<div style="position:fixed; margin:0 auto;">
+<div class="card" style="position:fixed; left:650px; margin-top: 19px;" >
+    <div style="position: fixed; margin-left: -300px; margin-top: 0px;">
+        <img src="../static/img/logoorderit.png" th:src="@{/static/img/logoorderit.png}" alt="infographic" style="width: 150px;"/>
+    </div>
+    <div class="card-body">
+        <h5 class="card-title" th:text="'Hello, ' + ${username}"></h5>
+        <p class="card-text">How are you doing?</p>
+        <a href="/myOrders" class="btn btn-primary">Check my orders</a>
+    </div>
+</div>
+    <div class="input-group-append" style="position:fixed; margin-left: 800px; ">
+        <form th:action="@{/home}" method="POST">
+            <h5>Enter the type of service below:</h5>
+            <input type="text" class="form-control" placeholder=" ex.'hairdresser'" id="shopAmenity" name="shopAmenity">
+            <h5>Enter the city where you want to order the service:</h5>
+            <input type="text" class="form-control" placeholder=" ex.'Warsaw'" id="shopTown" name="shopTown">
+            <h2><span class="text-danger" th:utext="${failMessage}">
+                </span></h2>
+            <button type="submit" class="btn btn-secondary btn-sm">Find available services</button>
+        </form>
+    </div>
+</div>
+    </br>
+    <div style="position: fixed; margin-left: 350px; margin-top: 300px;">
+    <img src="../static/img/infographic.png" th:src="@{/static/img/infographic.png}" alt="infographic" style="width: 1000px;"/>
+    </div>
+
+<div class="navbar fixed-bottom" style="position:fixed; margin-bottom: auto;">
+    <div style="margin: auto;">
+    <a href="/shopRegistration">Join us - register your local!</a>
+    </div>
+    <div class="card-footer text-muted" style="margin-left: 0px; width: 2300px;">
+        Order.it - 2021, <a href="http://www.freepik.com">Images designed by slidesgo / Freepik</a>
+    </div>
+</div>
+</body>
+</html>

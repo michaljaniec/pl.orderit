@@ -1,0 +1,35 @@
+[33mcommit 7bf475493f6cdfc9a10a6b10e3c1a9a484cd0661[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morderdoctor/master[m[33m)[m
+Author: Michał Janiec <dev.michaljaniec@gmail.com>
+Date:   Wed Nov 4 11:48:12 2020 +0100
+
+    Page error bug fixed
+
+[33mcommit cff3349407c9dfec2b2ba2e173af40dbc29e49b8[m
+Author: Michał Janiec <dev.michaljaniec@gmail.com>
+Date:   Tue Nov 3 21:46:22 2020 +0100
+
+    Simple change
+
+[33mcommit d1c607308dac649f722d804045195d7881da58d4[m
+Author: Michał Janiec <dev.michaljaniec@gmail.com>
+Date:   Tue Nov 3 21:42:15 2020 +0100
+
+    Upload your files feature v2
+
+[33mcommit e3c2895bb297a41eb7364e508d25ef0543154ac9[m
+Author: Michał Janiec <dev.michaljaniec@gmail.com>
+Date:   Tue Nov 3 20:48:30 2020 +0100
+
+    Upload your files feature
+
+[33mcommit 120f4e4c5d7fa5b7242dfa550ddc5133b81d9f09[m
+Author: Michał Janiec <dev.michaljaniec@gmail.com>
+Date:   Sun Sep 20 15:21:10 2020 +0200
+
+    New hmtl templates and hrefs
+
+[33mcommit 11c943148eae5014d85eaa892a31df6651474848[m
+Author: Michał Janiec <dev.michaljaniec@gmail.com>
+Date:   Sun Sep 20 14:40:13 2020 +0200
+
+    Added new features

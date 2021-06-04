@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<meta charset="utf-8">
+<head>
+    <meta charset="UTF-8">
+    <title>Order.it - my orders</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <style>
+        body{
+            background-color: #efeff1;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+        }
+    </style>
+</head>
+<body>
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div style="position: fixed; margin-left: 330px; margin-top: 10px;">
+        <img src="../static/img/logoorderit.png" th:src="@{/static/img/logoorderit.png}" alt="infographic" style="width: 80px;"/>
+    </div>
+    <div class="container" style="marign: auto; margin-left: 400px;">
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class=""><a href="/welcome">Home</a></li>
+            </ul>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/myOrders">My Orders</a></li>
+            </ul>
+            <ul class="nav navbar-nav">
+                <li class=""><a href="/messages">Message's box</a></li>
+            </ul>
+            <ul class="nav navbar-nav">
+                <li class=""><a href="/logout">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div th:each="order : ${order}" class="card" style="margin:0 auto; width:400px;">
+<h5 class="card-header" th:text="${order.shopName} + ', ' + ${order.shopTown} + ' ' + ${order.shopRoad}"></h5>
+<div class="card-body">
+    <h3 class="card-title" th:text="${order.serviceType}"></h3>
+        <h5>Date of service:</h5>
+        <div class="form-group" th:text="${order.dateOfService}"></div>
+</div>
+    <div class="inline-buttons">
+        <div style="float: left;">
+            <form th:action="@{'/myOrders/deleteOrder/' + ${order.orderId}}" method="POST">
+                <button type="submit" class="btn btn-secondary btn-sm" th:href="@{'/myOrders'}">Cancel the order</button>
+            </form>
+        </div>
+    <div style="float: right;">
+    <form th:action="@{'/message/' + ${order.shopOwnerId}}" method="get">
+        <button type="submit" class="btn btn-primary btn-sm">Submit message</button>
+    </form>
+    </div>
+
+    </div>
+</div>
+
+<div class="navbar fixed-bottom" style="position:fixed; margin-bottom: auto;">
+    <div class="card-footer text-muted" style="margin-left: 0px; width: 2300px;">
+        Order.it - 2021
+    </div>
+</div>
+</body>
+</html>

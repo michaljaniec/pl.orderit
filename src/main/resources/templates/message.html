@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<meta charset="utf-8">
+<head>
+    <title>Order.it - Write message</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div style="position: fixed; margin-left: 330px; margin-top: 10px;">
+        <img src="../static/img/logoorderit.png" th:src="@{/static/img/logoorderit.png}" alt="infographic" style="width: 80px;"/>
+    </div>
+        <div class="container"style="marign: auto; margin-left: 400px;">
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class=""><a href="/home">Home</a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li class=""><a href="/messages">Message's box</a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li class=""><a href="/myOrders">My Orders</a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li class=""><a href="/logout">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+</div>
+<div class="container" th:width="100">
+    <br/>
+    <form th:href="@{/message/${receivingId}}" method="POST" class="form-message" th:width="100">
+        <div class="card-body" style="margin: auto; width: 600px;">
+            <h3>Send message:</h3>
+            <form autocomplete="off" action="#" th:action="@{/message/{receivingId}}"
+                  th:object="${message}" method="post" class="form-horizontal"
+                  role="form">
+                <div class="form-group">
+<!--                    <textarea class="form-control" id="messageBody" name="messageBody" rows="6" placeholder="Input your message here."></textarea>-->
+
+                    <textarea type="text" rows="6" th:field="*{messageBody}" placeholder="Input your message there."
+                           class="form-control"></textarea>
+                    <label th:if="${#fields.hasErrors('messageBody')}" th:errors="*{messageBody}"
+                           class="validation-message"></label>
+
+                </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block" th:href="@{'/myOrders'}" style="width: 100px;">Send message</button>
+                    </div>
+            </form>
+        </div>
+    </form>
+</div>
+</body>
+</html>
