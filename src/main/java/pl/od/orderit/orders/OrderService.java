@@ -61,6 +61,7 @@ public class OrderService {
         order.setUser(user);
         user.setOrders(Collections.singleton(order));
         Order savedOrder = orderRepository.save(order);
+        System.out.println(savedOrder);
         return savedOrder;
     }
 

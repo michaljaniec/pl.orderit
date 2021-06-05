@@ -6,6 +6,7 @@ import pl.od.orderit.shops.Shop;
 import pl.od.orderit.user.User;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -61,7 +62,7 @@ public class Order {
 
     @NonNull
     @Column(name = "date_of_placing_the_order")
-    private Date dateOfPlacingTheOrder;
+    private LocalDateTime dateOfPlacingTheOrder;
 
     @NonNull
     @Column(name = "date_of_service")
@@ -72,7 +73,7 @@ public class Order {
     private User user;
 
     public Order(long userId, String username, long shopOwnerId, String orderingName, String orderingPhoneNumber, String serviceType, String shopName,
-                 String shopTown, String shopRoad, Date dateOfPlacingTheOrder, Date dateOfService, String commentsOnOrder) {
+                 String shopTown, String shopRoad, LocalDateTime dateOfPlacingTheOrder, Date dateOfService, String commentsOnOrder) {
         this.userId = userId;
         this.orderingUsername=username;
         this.shopOwnerId = shopOwnerId;

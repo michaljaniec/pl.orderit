@@ -21,6 +21,8 @@ import pl.od.orderit.user.User;
 import pl.od.orderit.user.UserServiceImpl;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
 
@@ -99,7 +101,7 @@ class OrderServiceTest {
         Order order = new Order();
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm");
         Date dateOfService = sdf.parse("01-02-2021 10:00");
-        Date dateOfPlacingTheOrder = sdf.parse("01-02-2021 11:00");
+        LocalDateTime dateOfPlacingTheOrder = LocalDateTime.now(ZoneId.of("UTC+02:00"));
         order.setUserId(1);
         order.setOrderingUsername("123456");
         order.setOrderingName("Michael");

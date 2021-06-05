@@ -106,9 +106,7 @@ public class ShopController {
                                                         BindingResult bindingResult) throws IOException, InterruptedException {
 
         ModelAndView modelAndView = new ModelAndView("/order/{shopTown}/{shopAmenity}");
-
         modelAndView.addObject("shop", shopService.findShops(shopTown, shopAmenity));
-
         if (modelAndView.getModel().get("shop").toString()=="[]") {
             bindingResult
                     .rejectValue("shopTown", "error.user",
@@ -128,12 +126,8 @@ public class ShopController {
                                           @PathVariable("shopName")String shopName ) {
 
         ModelAndView modelAndView = new ModelAndView();
-
-
         modelAndView.addObject("shop", shopService.findShopsByName(shopTown, shopAmenity, shopName));
         modelAndView.setViewName("offer");
-
-        System.out.println(modelAndView);
         return modelAndView;
     }
 

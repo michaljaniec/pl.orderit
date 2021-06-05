@@ -13,7 +13,12 @@ import pl.od.orderit.shops.Shop;
 import pl.od.orderit.user.UserServiceImpl;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.TimeZone;
 
 @RestController
 public class OrderController {
@@ -36,8 +41,8 @@ public class OrderController {
                                          ) throws JsonProcessingException {
 
         ModelAndView modelAndView = new ModelAndView();
-        Date dateOfPlacingTheOrder = java.util.Calendar.getInstance().getTime();
 
+        LocalDateTime dateOfPlacingTheOrder = LocalDateTime.now(ZoneId.of("UTC+02:00"));
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm");
         Date date = sdf.parse(dateInString);
 
@@ -66,13 +71,9 @@ public class OrderController {
 
         String userNameFromSession = userService.findUserByUsername(auth.getName()).getUsername();
         @NonNull String usernameFromOrder = orderService.getUsernameFromOrderById(orderId).get().getOrderingUsername();
-        System.out.println(userNameFromSession);
-        System.out.println(usernameFromOrder);
 
         long ownerIdFromSession = userService.findUserByUsername(auth.getName()).getId();
         @NonNull long ownerIdOfShop = orderService.getUsernameFromOrderById(orderId).get().getShopOwnerId();
-        System.out.println(ownerIdFromSession);
-        System.out.println(ownerIdOfShop);
 
         if(!((userNameFromSession.equals(usernameFromOrder))||(ownerIdFromSession==(ownerIdOfShop)))){
             modelAndView.setViewName("welcome");
