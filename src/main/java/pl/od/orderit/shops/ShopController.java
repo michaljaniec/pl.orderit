@@ -89,13 +89,15 @@ public class ShopController {
         return modelAndView;
     }
 
-    @GetMapping("/manage")
+    @GetMapping(value = "/manage")
     public ModelAndView findMyShop() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         ModelAndView modelAndView = new ModelAndView();
 
         modelAndView.addObject("order", orderService.showOrdersForShop());
         modelAndView.addObject("shop", shopService.findShopById(userService.findUserByUsername(auth.getName()).getShop().getId()));
+        modelAndView.addObject("providedServices", shopService.findProvidedServices());
+
         modelAndView.setViewName("manage");
         return modelAndView;
     }
@@ -127,6 +129,7 @@ public class ShopController {
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("shop", shopService.findShopsByName(shopTown, shopAmenity, shopName));
+        modelAndView.addObject("providedServices", shopService.findProvidedServicesByShopName(shopName));
         modelAndView.setViewName("offer");
         return modelAndView;
     }

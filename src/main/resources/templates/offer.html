@@ -47,14 +47,19 @@
         <form th:href="@{'/offer/' + ${shop.shopTown} + '-' + ${shop.shopAmenity} + '-' + ${shop.shopName} }" method="POST" class="form-signin" th:width="100">
         <div class="form-group">
             <label for="serviceType">Select your service:</label>
+
             <select class="form-control" id="serviceType" name="serviceType">
-                <option>-not selected-</option>
-                <option>Men's haircut</option>
-                <option>Children's haircut</option>
-                <option>Women's haircut</option>
-                <option>Women's coloring</option>
-                <option>Women's occasional haircut</option>
+                <option>- not selected -</option>
+                <div th:each="providedServices : ${providedServices}" class="card">
+                    <option>
+                        <h5 class="card-title" th:text="'['+${providedServices.sex} + '] ' +
+                                        ${providedServices.serviceName}+ ', ' +
+                                        ${providedServices.price} + '[$],-'">
+                        </h5>
+                    </option>
+                </div>
             </select>
+
         </div>
             <label for="serviceType">Choose the best time for you:</label>
             <div class="input-group mb-3" style="width:120px;">

@@ -40,7 +40,7 @@
 </div>
 
 <div style="position:fixed; margin: 0 auto; margin-top: 20px;">
-<div class="card" style="position:fixed; margin-left: 380px; width:500px; height: 520px; margin-top: 26px;">
+<div class="card" style="position:fixed; margin-left: 580px; width:500px; height: 520px; margin-top: 26px;">
 
 <h5 class="card-header" th:text="${shop.shopName} + ', ' + ${shop.shopTown} + ' ' + ${shop.shopRoad}"></h5>
 <div class="card-body">
@@ -85,7 +85,7 @@
     </div>
 </div>
 
-<div style="position:fixed; margin-left: 900px; width:400px;">
+<div style="position:fixed; margin-left: 1100px; width:400px;">
 <h3>Pending orders:</h3>
 <div th:each="order : ${order}" class="card">
     <form th:action="@{'/manage/deleteOrder/' + ${order.orderId}}" method="POST">
@@ -103,6 +103,33 @@
 </div>
 </div>
 </div>
+
+
+<div class="card" style="position:fixed; margin-left: 265px; width:300px; height: 520px; margin-top: 46px;">
+<h5 class="card-header">PROVIDED SERVICES</h5>
+    <div th:each="providedServices : ${providedServices}" class="card">
+        <h5 class="card-title" th:text="'['+${providedServices.sex} + '] ' +
+                                        ${providedServices.serviceName}+ ', ' +
+                                        ${providedServices.price} + '[$],-'"></h5>
+    </div>
+        <form method="POST"  th:action="@{/manage/setAvailableShopServices}" th:width="100" role="form">
+            <div class="form-group">
+                </br>
+                </br>
+                <h4>New service: </h4>
+                </br>
+                <label for="shopDescription">Sex: [Men/Women/Child]</label>
+                <textarea class="form-control" id="serviceSex" rows="1" name="serviceSex" style="width: 200px;"></textarea>
+                <label for="shopDescription">Name: [ex. 'Men's cut']</label>
+                <textarea class="form-control" id="serviceName" rows="1" name="serviceName" style="width: 200px;"></textarea>
+                <label for="shopDescription">Price: [ex. '20']</label>
+                <textarea class="form-control" id="servicePrice" rows="1" name="servicePrice" style="width: 100px;"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block" style="width:90px;" th:href="@{'/manage'}">Save changes</button>
+        </form>
+</div>
+
+
 
 <div class="navbar fixed-bottom" style="position:fixed; margin-bottom: auto;">
     <div class="card-footer text-muted" style="margin-left: 0px; width: 2300px;">

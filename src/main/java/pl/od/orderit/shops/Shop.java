@@ -2,9 +2,11 @@ package pl.od.orderit.shops;
 
 import lombok.*;
 import org.hibernate.annotations.DynamicUpdate;
+import pl.od.orderit.shops.typeOfService.TypeOfServiceModel;
 import pl.od.orderit.user.User;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -61,5 +63,8 @@ public class Shop {
 
     @Column(name="avatar_name")
     private String avatarName;
+
+    @OneToMany(mappedBy = "shop")
+    private Set<TypeOfServiceModel> typeOfServiceModel;
 
 }
