@@ -39,7 +39,7 @@ Order - allows user to order selected service.
 Orders - displays previous orders, allows the user to write message to the shop's owner.
 
 ![screenshot](readme-img/orders.png) <br/><br/>
-Manage - display managment panel for shop owner.
+Manage - displays managment panel for shop owner.
 
 ![screenshot](readme-img/serviceorders.png) <br/><br/>
 
